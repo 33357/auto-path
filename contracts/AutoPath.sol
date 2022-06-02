@@ -16,7 +16,7 @@ contract AutoPath {
 
     uint24[4] public FeeList = [100, 500, 3000, 10000];
 
-    uint256 public constant maxTokenLength = 10;
+    uint256 public constant maxTokenLength = 6;
 
     IUniswapV3Factory public UniswapV3Factory = IUniswapV3Factory(0x1F98431c8aD98523631AE4a59f267346ea31F984);
 
@@ -106,13 +106,9 @@ contract AutoPath {
             address(0),
             address(0),
             address(0),
-            address(0),
-            address(0),
-            address(0),
-            address(0),
             address(0)
         ];
-        feeList = [singleFee, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        feeList = [singleFee, 0, 0, 0, 0, 0, 0];
         amountOutMax = singleAmountOutMax;
         for (uint256 i = 0; i < TokenList.length; i++) {
             (uint24 fee, uint256 muxAmountOutMax) = getAmountOutMax(TokenList[i], tokenOut, amountOutMaxTokenList[i]);
